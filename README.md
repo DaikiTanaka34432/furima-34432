@@ -50,7 +50,7 @@ has_many :purchases
 | category_id         | integer    | null: false                     |
 | status_id           | integer    | null: false                     |
 | delivery_fee_id     | integer    | null: false                     |
-| shipment_sources_id | integer    | null: false                     |
+| prefecture_id       | integer    | null: false                     |
 | shipment_days_id    | integer    | null: false                     |
 | fee                 | integer    | null: false                     |
 | user                | references | null: false, foreign_keys: true |
@@ -74,15 +74,12 @@ has_one :address
 ## addresses
 | Column            | Type       | Options                         |
 | ----------------- | ---------  |-------------------------------- |
-| credit_number     | integer    | null: false                     |
-| credit_expiration | integer    | null: false                     |
-| security_code     | integer    | null: false                     |
-| postal_code       | integer    | null: false                     |
-| prefecture        | string     | null: false                     |
+| postal_code       | string     | null: false                     |
+| prefecture_id     | integer    | null: false                     |
 | city              | string     | null: false                     |
-| house_number      | integer    | null: false                     |
+| house_number      | string     | null: false                     |
 | house_name        | string     |                                 |
-| telephone         | integer    | null: false                     |
+| telephone         | string     | null: false                     |
 | purchase          | references | null: false, foreign_keys: true |
 
 ### Association
