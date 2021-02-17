@@ -18,18 +18,24 @@ RSpec.describe User, type: :model do
       expect(@user).to be_valid
     end
 
-    it 'ユーザー本名は名字と名前が存在し、全角（漢字・ひらがな・カタカナ）で入力すれば登録できる' do
+    it 'ユーザー本名は名字が存在し、全角（漢字・ひらがな・カタカナ）で入力すれば登録できる' do
       @user.last_name ='山田'
+      expect(@user).to be_valid
+    end
+    it 'ユーザー本名は名前が存在し、全角（漢字・ひらがな・カタカナ）で入力すれば登録できる' do
       @user.first_name ='はなこ'
       expect(@user).to be_valid
     end
 
-    it 'ユーザー本名のフリガナは名字と名前が存在し、全角（カタカナ）で入力すれば登録できる' do
+    it 'ユーザー本名のフリガナは名字が存在し、全角（カタカナ）で入力すれば登録できる' do
       @user.last_name_read ='ヤマダ'
+      expect(@user).to be_valid
+    end
+    it 'ユーザー本名のフリガナは名前が存在し、全角（カタカナ）で入力すれば登録できる' do
       @user.first_name_read ='ハナコ'
       expect(@user).to be_valid
     end
-    
+
     it ' 生年月日が存在すれば登録できる' do
       @user.birthday ='2000-01-01'
       expect(@user).to be_valid
