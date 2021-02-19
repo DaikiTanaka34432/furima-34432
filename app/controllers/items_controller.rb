@@ -1,16 +1,15 @@
 class ItemsController < ApplicationController
 
   def index
-    @items =Item.all.order("created_at DESC")
+    @items = Item.all
+    # @items =Item.all.order("created_at DESC")
   end
   
   def new
-    # @user = current_user
     @item = Item.new
   end
 
   def create
-    # @user = current_user.id
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path

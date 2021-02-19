@@ -78,14 +78,26 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Fee can't be blank")
       end
       
-      it '金額が300~9999999円の範囲外だと出品できない' do
+      it '金額が300より低いと出品できない' do
         @item.fee = 100
         @item.valid?
         expect(@item.errors.full_messages).to include("Fee 300〜9,999,999円の範囲で入力して下さい")
       end
       
-      it '金額が半角数字以外だと出品できない' do
+      it '金額が9,999,999より高いと出品できない' do
+        @item.fee = 10000000
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Fee 300〜9,999,999円の範囲で入力して下さい")
+      end
+      
+      it '金額が全角数字だと出品できない' do
         @item.fee = '１１１１１'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Fee 半角数字を使用して下さい")
+      end
+      
+      it '金額が全角文字だと出品できない' do
+        @item.fee = 'あいうえお'
         @item.valid?
         expect(@item.errors.full_messages).to include("Fee 半角数字を使用して下さい")
       end
