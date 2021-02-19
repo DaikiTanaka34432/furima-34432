@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if current_user.id != @item.user_id 
       redirect_to action: :index
-    elsif  current_user.id == @item.user_id && @item.nil?
+    elsif  @item.nil?
       redirect_to action: :index
     end
   end
