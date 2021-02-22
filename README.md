@@ -39,7 +39,7 @@ Things you may want to cover:
 
 ### Association
 has_many :items
-has_many :purchases
+has_many :orders
 
 
 ## items テーブル
@@ -56,10 +56,10 @@ has_many :purchases
 | user                | references | null: false, foreign_keys: true |
 
 ### Association
-has_one :purchase
+has_one :order
 belongs_to :user
 
-## purchases テーブル
+## orders テーブル
 | Column           | Type       | Options                         |
 | ---------------- | ---------  |-------------------------------- |
 | item             | references | null: false, foreign_keys: true |
@@ -83,4 +83,4 @@ has_one :address
 | purchase          | references | null: false, foreign_keys: true |
 
 ### Association
-belongs_to :purchase
+belongs_to :order
