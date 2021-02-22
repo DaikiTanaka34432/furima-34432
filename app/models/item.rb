@@ -20,7 +20,6 @@ class Item < ApplicationRecord
     validates :shipment_days_id
   end
 
-  # has_one :purchase
   belongs_to :user
   has_one_attached :image
   has_one :order
