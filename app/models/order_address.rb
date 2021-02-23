@@ -2,6 +2,8 @@ class OrderAddress
   include ActiveModel::Model
   attr_accessor :postal_code, :prefecture_id, :city, :house_number, :house_name, :telephone, :item_id, :user_id
 
+  attr_accessor :token
+
   with_options presence: true do
     validates :postal_code, format:{with:  /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Input correctly"}
     validates :prefecture_id, numericality:{other_than: 0, message: "can't be blank"}
