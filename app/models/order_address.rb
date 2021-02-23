@@ -12,6 +12,7 @@ class OrderAddress
     validates :telephone, format:{with: /\A\d{11}\z/, message: "is invalid. 11桁以内の半角数字で入力してください"}
     validates :item_id
     validates :user_id
+    validates :token
   end
 
   def save
