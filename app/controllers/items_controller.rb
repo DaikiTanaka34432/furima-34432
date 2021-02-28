@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except:[:index, :show]
+  before_action :authenticate_user!, except:[:index, :show, :search]
   before_action :set_item, only: [:show, :edit, :update, :destroy] 
   before_action :set_edit, only: [:edit, :update, :destroy]
   before_action :set_edit_out, only:[:edit, :update, :destroy]
@@ -28,6 +28,7 @@ class ItemsController < ApplicationController
   end
 
   def update
+    binding.pry
     if @item.update(item_params)
       redirect_to action: :show
     else
@@ -39,6 +40,11 @@ class ItemsController < ApplicationController
     if @item.destroy
       redirect_to action: :index
     end
+  end
+
+  def search
+    @items = Item.search(params[:keyword])
+    @category_items = Item.search(params[:category])
   end
 
   private 

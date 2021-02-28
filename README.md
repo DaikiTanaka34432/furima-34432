@@ -36,11 +36,19 @@ Things you may want to cover:
 | last_name_read     | string  | null: false               |
 | first_name_read    | string  | null: false               |
 | birthday           | date    | null: false               |
+| introduct          | string  |                           |
 
 ### Association
 has_many :items
 has_many :orders
+has_one  :introducts 
 
+## introducts テーブル
+| Column             | Type    | Options                   |
+| ------------------ | ------  | ------------------------- |
+| introduct          | string  |                           |
+
+belongs_to :user
 
 ## items テーブル
 | Column              | Type       | Options                         |

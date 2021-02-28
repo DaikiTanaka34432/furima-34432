@@ -124,10 +124,12 @@
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', new_item_path, class: "subtitle" %>
+    <% breadcrumb :root %>
     <ul class='item-lists'>
      <% @items.each do |item|%> 
       <li class='list'>
        <%= link_to item_path(item.id), method: :get do %>
+       <% breadcrumb :root %>
         <div class='item-img-content'>
          <%= image_tag item.image, class: "item-img" %> 
 
@@ -180,6 +182,7 @@
 
 <% if user_signed_in? %>
   <%= link_to(new_item_path, class: 'purchase-btn') do %>
+  <% breadcrumb :root %>
     <span class='purchase-btn-text'>出品する</span> 
     <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
   <% end %>

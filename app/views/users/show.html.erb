@@ -1,0 +1,58 @@
+<%= render "shared/header" %>
+
+<%# ユーザー自己紹介エリア%>
+<div class="simple-intro">
+  <ul>
+    <li class = "user-name">
+      FRIMAネーム：<%= @user.nickname %>
+    </li>
+    <li class = "user-items">
+      商品出品数：<%= @user.items.length %>
+    </li>
+  <ul>
+</div>
+
+<%# ユーザー商品一覧%>
+<div class="items-table"><%= @user.nickname %>さんの商品一覧</div>
+<ul class='item-lists'>
+  <% @items.each do |item|%> 
+    <li class='list'>
+      <%= link_to item_path(item.id), method: :get do %>
+      <% breadcrumb :user %>
+      <div class='item-img-content'>
+        <%= image_tag item.image, class: "item-img" %> 
+
+          <% if item.order.present? %> 
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+          <% end %> 
+
+      </div>
+      <div class='item-info'>
+        <h3 class='item-name'>
+            <%= item.name %> 
+        </h3>
+        <div class='item-price'>
+            <span><%= item.fee %>円<br><%= item.delivery_fee.name %></span> 
+          <div class='star-btn'>
+            <%= image_tag "star.png", class:"star-icon" %>
+            <span class='star-count'>0</span>
+          </div>
+        </div>
+      </div>
+      <% end %>   
+    </li>
+  <% end %>
+</ul>
+
+<%# ログイン中且つ、ログインしているユーザーとページ情報のユーザーが同一の時、出品ボタンを表示する。 %>
+<% if user_signed_in? && current_user.id == @user.id%>
+  <%= link_to(new_item_path, class: 'purchase-btn') do %>
+  <% breadcrumb :user %>
+    <span class='purchase-btn-text'>出品する</span> 
+    <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+  <% end %>
+<% end %>
+
+<%= render "shared/footer" %>

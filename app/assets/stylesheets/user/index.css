@@ -1,0 +1,26 @@
+.simple-intro{
+  background-color: #3ccace;
+  display: block;
+  text-align: center;
+  color: white;
+  margin: 10px 50px;
+}
+
+ul{
+  list-style: none;
+}
+
+.user-name{
+  font-size: 20px;
+  border-bottom: 1px solid white;
+}
+
+.user-items{
+  font-size: 18px;
+}
+
+.items-table{
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
+}
