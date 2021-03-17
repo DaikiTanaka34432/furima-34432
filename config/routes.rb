@@ -5,9 +5,6 @@ resources :items do
   collection do
     get 'search'
   end
-  member do
-    get 'search'
-  end
   resources :orders,  only:[:index, :new, :create]
 end
 resources :users, only: :show

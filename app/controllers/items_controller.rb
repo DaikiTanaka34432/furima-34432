@@ -43,7 +43,6 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.search(params[:keyword])
-    @category_items = Item.search(params[:category])
   end
 
   private 
